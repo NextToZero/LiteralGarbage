@@ -2,11 +2,12 @@
 <html>
 <header>
     <h1> This website is <u>literal <b id="garbage"> garbage </b></u></h1>
+   
 </header>
 
 <body>
     <p> But now you get to add something, and make it even more trash.</p>
-    <table>
+    <table id="main-controls">
         <tr>
             <!-- a volume slider for the fart sound -->
             <td>
@@ -15,10 +16,13 @@
         </tr>
         <tr>
             <td>
-                <button onclick="addTrash()"> Add Trash </button>
+                <button onclick="addTrash()" class="btn"> Add Trash </button>
             </td>
             <td>
-                <button onclick="addQuote()"> Add Quote </button>
+                <button onclick="addQuote()" class="btn"> Add Quote </button>
+            </td>
+            <td>
+                <button onclick="HackerMode()" class="btn"> HackerMode™️ </button>
             </td>
         </tr>
     </table>
@@ -27,7 +31,7 @@
 </body>
 
 <footer>
-    <script src="sometrash.js"></script> 
+    <script src="sometrash.js"></script>
 </footer>
 
 
@@ -36,61 +40,81 @@
 </html>
 
 <style>
+    body {
+        background-color: black;
+        color: aliceblue;
+    }
 
-body{
-    background-color: black;
-    color: aliceblue;
-}
-#garbage{
-    color:red;
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
-}
+    #garbage {
+        color: red;
+        -webkit-user-select: none;
+        /* Safari */
+        -ms-user-select: none;
+        /* IE 10 and IE 11 */
+        user-select: none;
+        /* Standard syntax */
+    }
 
-div{
+    div {
 
-    color:purple;
-    font-size: 32px;
+        color: purple;
+        font-size: 32px;
 
-}
+    }
 
-/* Style the buttons, the button should be horizontally aligned, brightly coloured and have modern styling. */
-button{
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-
-/*div:nth-child(3n) { transform:rotate(2deg); color: pink;}
-div:nth-child(4n) { transform:rotate(-5deg); color:#4CAF50; }
-div:nth-child(5n) { transform:rotate(-6deg); color: orange;}
-div:nth-child(6n) { transform:rotate(6deg); color: blue;}
-div:nth-child(7n) { transform:rotate(9deg); color: red;}*/
-
-body{
-
-background-image: url(sun.png);
-background-position: right;
-background-repeat: no-repeat;
-background-size: 75%;
-
-}
-
-/*Give the canvas a thin border and white backgroud*/
-canvas {
-    position:fixed;
-    top:0;
-    left:0;
-    z-index: -1;
-}
+    /* Style the buttons, the button should be horizontally aligned, brightly coloured and have modern styling. */
+    button {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
 
 
+    body {
+
+        background-image: url(sun.png);
+        background-position: top;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        z-index: auto;
+    }
+
+    /*Give the canvas a thin border and white backgroud*/
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    .btn {
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px #999;
+        height: 95%;
+
+    }
+
+
+    .btn:hover {
+        background-color: #3e8e41
+    }
+
+    .btn:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
 </style>

@@ -1,3 +1,5 @@
+var hackermode = false;
+
 function colorcycle(){ 
     if(document.getElementById("garbage").style.color == "red"){
         document.getElementById("garbage").style.color = "blue"; 
@@ -8,6 +10,28 @@ function colorcycle(){
 
 
 }
+
+function HackerMode(){
+
+    document.body.style.color = "limegreen";
+    hackermode = true;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = "72px Arial";
+
+
+
+}
+var characters = ["✌","😂","😝","😁","😱","👉","🙌","🍻","🔥","🌈","☀","🎈","🌹","💄","🎀","⚽","🎾","🏁","😡","👿","🐻","🐶","🐬","🐟","🍀","👀","🚗","🍎","💝","💙","👌","❤","😍","😉","😓","😳","💪","💩","🍸","🔑","💖","🌟","🎉","🌺","🎶","👠","🏈","⚾","🏆","👽","💀","🐵","🐮","🐩","🐎","💣","👃","👂","🍓","💘","💜","👊","💋","😘","😜","😵","🙏","👋","🚽","💃","💎","🚀","🌙","🎁","⛄","🌊","⛵","🏀","🎱","💰","👶","👸","🐰","🐷","🐍","🐫","🔫","👄","🚲","🍉","💛","💚"]
+    
+    
+function letterspam(){
+    var randomchar = characters[Math.floor(Math.random()*characters.length)];    
+    ctx.fillStyle = "#"+Math.floor(Math.random()*16777215).toString(16);
+    ctx.rotate(Math.random()*2*Math.PI);
+    ctx.fillText(randomchar,Math.random()*canvas.width,Math.random()*canvas.height);
+
+}
+
 
 document.getElementById("garbage").onclick = function(){ colorcycle()}
 
@@ -31,29 +55,7 @@ function addQuote(){
     document.body.appendChild(newP);
 }
 
-/*window.setInterval(function(){
-    addElement();
 
-    
-}, 1000);
-
-
-
-function addElement(){
-
-    const newDiv = document.createElement("div");
-
-    const newContent = document.createTextNode("LiTeRaL GaRbAgE");
-
-    newDiv.appendChild(newContent);
-
-    const currentDiv = document.getElementById("div1");
-    document.body.insertBefore(newDiv, currentDiv);
-
-    
-
-
-}*/
 
 var audio = new Audio('lib/fart.mp3');
 
@@ -81,5 +83,14 @@ function writeRandomText(){
 
 //write random words to the canvas every .5 seconds
 window.setInterval(function(){
+    if( hackermode == false){
     writeRandomText();
+    }
+    if( hackermode == true){
+        
+        letterspam();
+
+
+    }
 } , 100);
+
