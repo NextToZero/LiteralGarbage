@@ -22,3 +22,13 @@ function addElement(){
 
 
 }
+
+//Every 5 seconds play a loud fart sound
+window.setInterval(function(){
+    fart();
+}  , 5000);
+
+function fart(){
+    var audio = new Audio('lib/fart.mp3');
+    audio.play();
+}
