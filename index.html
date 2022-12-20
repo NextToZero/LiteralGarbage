@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
 <header>
-    <script src="sometrash.js"></script> 
     <h1> This website is <u>literal <b id="garbage"> garbage </b></u></h1>
 </header>
 
 <body>
     <p> But now you get to add something, and make it even more trash.</p>
     <table>
+        <tr>
+            <!-- a volume slider for the fart sound -->
+            <td>
+                <input type="range" min="0" max="1" step="0.1" value="0.5" id="volume" oninput="updateVolume()">
+            </td>
+        </tr>
         <tr>
             <td>
                 <button onclick="addTrash()"> Add Trash </button>
@@ -19,9 +24,9 @@
     </table>
 </body>
 
-<!-- two horizontally aligned buttons in a table -->
-
-
+<footer>
+    <script src="sometrash.js"></script> 
+</footer>
 
 
 

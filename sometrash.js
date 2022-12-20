@@ -55,12 +55,14 @@ function addElement(){
 
 }
 
+var audio = new Audio('lib/fart.mp3');
+
 //Every 5 seconds play a loud fart sound
 window.setInterval(function(){
-    fart();
+    audio.play();
 }  , 5000);
 
-function fart(){
-    var audio = new Audio('lib/fart.mp3');
-    audio.play();
+//Adjusts the volume of the fart sounds according to the slider
+function updateVolume(){
+    audio.volume = document.getElementById("volume").value;
 }
