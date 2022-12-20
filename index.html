@@ -6,7 +6,9 @@
 
 <body>
     <p> But now you get to add something, and make it even more trash.</p>
-
+    <div>
+        <button onclick="addTrash()"> Add Trash </button>
+    </div>
 </body>
 
 
@@ -49,6 +51,16 @@ function colorcycle(){
     }
 
 
+}
+
+//the onclick function for the button
+function addTrash(){
+    //create a new paragraph
+    var newP = document.createElement("p");
+    //set the text of the paragraph to "more trash"
+    newP.innerHTML = "more trash";
+    //add the paragraph to the body
+    document.body.appendChild(newP);
 }
 
 
