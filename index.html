@@ -7,6 +7,13 @@
 
 <body>
     <p> But now you get to add something, and make it even more trash.</p>
+    <div>
+        <button onclick="addTrash()"> Add Trash </button>
+    </div>
+    <!-- a button that inserts a paragraph of text into the page. The text is a quote from the movie "The Big Lebowski". -->
+    <div>
+        <button onclick="addQuote()"> Add Quote </button>
+    </div>
 
 </body>
 
@@ -57,6 +64,25 @@ function colorcycle(){
 
 }
 
+//the onclick function for the button
+function addTrash(){
+    //create a new paragraph
+    var newP = document.createElement("p");
+    //set the text of the paragraph to "more trash"
+    newP.innerHTML = "more trash";
+    //add the paragraph to the body
+    document.body.appendChild(newP);
+}
+
+//the onclick function for the addQuote button
+function addQuote(){
+    //create a new paragraph
+    var newP = document.createElement("p");
+    //set the text of the paragraph to the quote
+    newP.innerHTML = "The Dude abides.";
+    //add the paragraph to the body
+    document.body.appendChild(newP);
+}
 
 
 
