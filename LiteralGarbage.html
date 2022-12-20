@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <h1> This website is <u>literal <b id="garbage"> garbage </b></u></h1>
+</header>
+
+<body>
+    <p> But now you get to add something, and make it even more trash.</p>
+
+</body>
+
+
+
+
+
+
+</html>
+
+<style>
+
+body{
+    background-color: black;
+    color: aliceblue;
+}
+#garbage{
+    color:red;
+}
+
+</style>
+
+
+
+
+<script> 
+
+document.getElementById("garbage").onclick = function(){ colorcycle()}
+
+function colorcycle(){ 
+    if(document.getElementById("garbage").style.color == "red"){
+        document.getElementById("garbage").style.color = "blue"; 
+    }
+    else{
+        document.getElementById("garbage").style.color = "red" 
+    }
+
+
+}
+
+
+
+</script>
