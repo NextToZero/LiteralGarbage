@@ -31,7 +31,7 @@ function addQuote(){
     document.body.appendChild(newP);
 }
 
-window.setInterval(function(){
+/*window.setInterval(function(){
     addElement();
 
     
@@ -53,7 +53,7 @@ function addElement(){
     
 
 
-}
+}*/
 
 var audio = new Audio('lib/fart.mp3');
 
@@ -66,3 +66,20 @@ window.setInterval(function(){
 function updateVolume(){
     audio.volume = document.getElementById("volume").value;
 }
+
+var canvas = document.getElementById("canvas");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+var ctx = canvas.getContext("2d");
+
+function writeRandomText(){
+    ctx.font = "30px Arial";
+    ctx.fillStyle = "#"+Math.floor(Math.random()*16777215).toString(16);
+    ctx.rotate(Math.random()*2*Math.PI);
+    ctx.fillText("LiTeRaL GaRbAgE",Math.random()*canvas.width,Math.random()*canvas.height);
+}
+
+//write random words to the canvas every .5 seconds
+window.setInterval(function(){
+    writeRandomText();
+} , 100);
