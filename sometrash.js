@@ -123,7 +123,7 @@ function startGame(){
     var dx = 2;
     var dy = -2;
     var ballRadius = 10;
-    var paddleHeight = 10;
+    var paddleHeight = 30;
     var paddleWidth = 75;
     var paddleX = (canvas.width-paddleWidth)/2;
     var rightPressed = false;
@@ -147,17 +147,18 @@ function startGame(){
         }
     }
     function drawPaddle(){
-        ctx.beginPath();
-        ctx.rect(paddleX, canvas.height-paddleHeight-20, paddleWidth, paddleHeight);
-        ctx.fillStyle = "#0095DD";
-        ctx.fill();
-        ctx.closePath();
+        //the paddle is a banana
+        var img = new Image();
+        img.src = "lib/banana.png";
+        ctx.drawImage(img, paddleX, canvas.height-paddleHeight-20, paddleWidth, paddleHeight);
     }
     function drawBall(){
+        //the ball is an egg
+        var img = new Image();
+        img.src = "lib/egg.png";
+        ctx.drawImage(img, x-ballRadius, y-ballRadius, ballRadius*2, ballRadius*2);
         ctx.beginPath();
         ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-        ctx.fillStyle = "#0095DD";
-        ctx.fill();
         ctx.closePath();
     }
     //if the ball is within 2 pixels of the paddle, reverse the direction of the ball
