@@ -3,7 +3,7 @@ window.setInterval(function(){
     addElement();
 
     
-}, 100);
+}, 1000);
 
 
 
