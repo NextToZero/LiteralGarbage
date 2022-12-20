@@ -24,10 +24,14 @@
             <td>
                 <button onclick="HackerMode()" class="btn"> HackerMode™️ </button>
             </td>
+            <td>
+                <!-- a button for creating a canvas that says "Play a Game" -->
+                <button onclick="createCanvas()" class="btn"> Play a Game </button>
+            </td>
         </tr>
     </table>
     <!-- a canvas -->
-    <canvas id="canvas"></canvas>
+    <canvas id="canvasBackground"></canvas>
 </body>
 
 <footer>
@@ -88,7 +92,7 @@
     }
 
     /*Give the canvas a thin border and white backgroud*/
-    canvas {
+    #canvasBackground {
         position: fixed;
         top: 0;
         left: 0;
