@@ -122,6 +122,7 @@ function startGame(){
     var y = canvas.height-200;
     var dx = 2;
     var dy = -2;
+    var score = 0;
     var ballRadius = 10;
     var paddleHeight = 30;
     var paddleWidth = 75;
@@ -161,16 +162,74 @@ function startGame(){
         ctx.arc(x, y, ballRadius, 0, Math.PI*2);
         ctx.closePath();
     }
+    //draw a score counter
+    function drawScore(){
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#0095DD";
+        ctx.fillText("Score: "+score, 8, 20);
+    }
+
     //if the ball is within 2 pixels of the paddle, reverse the direction of the ball
     function collisionDetection(){
         if(x > paddleX-2 && x < paddleX + paddleWidth+2 && y > canvas.height-paddleHeight-20-2 && y < canvas.height-paddleHeight-20+2) {
             dy = -dy;
         }
+        for(c=0; c<brickColumnCount; c++) {
+            for(r=0; r<brickRowCount; r++) {
+                var b = bricks[c][r];
+                if(b.status == 1) {
+                    if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
+                        dy = -dy;
+                        b.status = 0;
+                        score+= 10;
+                        if(score >= brickRowCount*brickColumnCount*10) {
+                            document.body.removeChild(canvas);
+                            win();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //fill the top of the canvas with bricks, when the ball touches a brick, remove the brick, reverse the direction of the ball, and add 10 to the score
+    var brickRowCount = 3;
+    var brickColumnCount = 10;
+    var brickWidth = 75;
+    var brickHeight = 20;
+    var brickPadding = 10;
+    var brickOffsetTop = 30;
+    var brickOffsetLeft = 30;
+    var bricks = [];
+    for(c=0; c<brickColumnCount; c++) {
+        bricks[c] = [];
+        for(r=0; r<brickRowCount; r++) {
+            bricks[c][r] = { x: 0, y: 0, status: 1 };
+        }
+    }
+    function drawBricks() {
+        for(c=0; c<brickColumnCount; c++) {
+            for(r=0; r<brickRowCount; r++) {
+                if(bricks[c][r].status == 1) {
+                    var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
+                    var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
+                    bricks[c][r].x = brickX;
+                    bricks[c][r].y = brickY;
+                    ctx.beginPath();
+                    ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                    ctx.fillStyle = "#0095DD";
+                    ctx.fill();
+                    ctx.closePath();
+                }
+            }
+        }
     }
 
     function draw(){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawScore();
         drawBall();
+        drawBricks();
         if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
             dx = -dx;
         }
@@ -194,6 +253,16 @@ function startGame(){
         }
     }
     setInterval(draw, 10);
+}
+
+function win(){
+    var canvas = document.getElementById("canvasBackground");
+    var ctx = canvas.getContext("2d");
+    canvas.width = canvas.width;
+    ctx.rotate(0);
+    ctx.font = "80px Arial";
+    ctx.fillStyle = "Green";
+    ctx.fillText("YOU WIN",canvas.width/2,canvas.height/2);
 }
 
 //clear canvasBackground, reset text rotation, and write "YOU LOSE" in large red text to the center of canvasBackground
