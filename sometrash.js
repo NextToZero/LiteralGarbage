@@ -1,5 +1,3 @@
-document.getElementById("garbage").onclick = function(){ colorcycle()}
-
 function colorcycle(){ 
     if(document.getElementById("garbage").style.color == "red"){
         document.getElementById("garbage").style.color = "blue"; 
@@ -10,6 +8,8 @@ function colorcycle(){
 
 
 }
+
+document.getElementById("garbage").onclick = function(){ colorcycle()}
 
 //the onclick function for the button
 function addTrash(){
